@@ -29,3 +29,5 @@ has both reflection/scatter and refraction
 With Snell's law, we have $R^\prime_\perp=\frac{\eta}{\eta^\prime}(R+n\cos\theta)=\frac{\eta}{\eta^\prime}(R-R\cdot nn)$
 For full reflection's sake, must switch whether refract.
 Schlick's approximation
+### Camera
+fov

@@ -9,18 +9,18 @@
 using std::shared_ptr;
 using std::make_shared;
 
-class hittable_list : public hittable {
+class Hittable_list : public Hittable {
     public:
-        hittable_list() {}
+        Hittable_list() {}
 
         void clear() { objects.clear(); }
-        void append(const shared_ptr<hittable> &object) { objects.push_back(object); }
+        void append(const shared_ptr<Hittable> &object) { objects.push_back(object); }
 
         virtual bool hit(
-            const ray& r, double t_min, double t_max, hit_record& rec) const override;
+            const Ray& r, double t_min, double t_max, Hit_record& rec) const override;
 
     public:
-        std::vector<shared_ptr<hittable>> objects;
+        std::vector<shared_ptr<Hittable>> objects;
 };
 
 #endif

@@ -40,6 +40,11 @@ class Vec3 {
             return value[0]*value[0]+value[1]*value[1]+value[2]*value[2];
         }
 
+        bool near_zero() const {
+                    const auto s = 1e-8;
+        return (fabs(x()) < s) && (fabs(y()) < s) && (fabs(z()) < s);
+        }
+
         static Vec3 random();
         static Vec3 random(double min, double max);
     };
@@ -86,6 +91,10 @@ inline Vec3 cross(const Vec3 &u, const Vec3 &v) {
 
 inline Vec3 unit_vector(Vec3 v) {
     return v / v.len();
+}
+
+inline Vec3 reflect(const Vec3& v, const Vec3& n) {
+    return v - 2*dot(v,n)*n;
 }
 
 Vec3 random_in_unit_sphere();

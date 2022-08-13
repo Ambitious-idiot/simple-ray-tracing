@@ -13,3 +13,12 @@ Simple antialias by sampling.
 with output direction randomly chosen and recursively compute the reflection with an upper bound of reflection times.
 ## Gamma correction
 correct rgb computing from linear to sqrt
+## Materials
+### Abstract class
+virtual function scatter
+### Lambertian
+Pure diffusion
+### Metal
+Pure reflection
+### Something about linking
+Material has a Hit_record member while Hittable_record has a Material member, must declare the class in x.h and include both x.h and y.h in .cpp

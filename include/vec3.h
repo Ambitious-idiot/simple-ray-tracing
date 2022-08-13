@@ -39,6 +39,9 @@ class Vec3 {
         double len_square() const {
             return value[0]*value[0]+value[1]*value[1]+value[2]*value[2];
         }
+
+        static Vec3 random();
+        static Vec3 random(double min, double max);
     };
 
 inline std::ostream& operator<<(std::ostream &out, const Vec3 &v) {
@@ -84,6 +87,8 @@ inline Vec3 cross(const Vec3 &u, const Vec3 &v) {
 inline Vec3 unit_vector(Vec3 v) {
     return v / v.len();
 }
+
+Vec3 random_in_unit_sphere();
 
 using Point3 = Vec3;
 using Color = Vec3;

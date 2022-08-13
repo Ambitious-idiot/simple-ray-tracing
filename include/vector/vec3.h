@@ -101,6 +101,7 @@ Vec3 refract(const Vec3& uv, const Vec3& n, double eta_divided);
 
 Vec3 random_in_unit_sphere();
 Vec3 random_unit_vector();
+Vec3 random_in_unit_disk();
 
 using Point3 = Vec3;
 using Color = Vec3;

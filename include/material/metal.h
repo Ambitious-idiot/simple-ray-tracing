@@ -5,7 +5,7 @@
 
 class Metal : public Material {
     public:
-        Metal(const Color& a) : albedo(a) {}
+        Metal(const Color& a, double f) : albedo(a), fuzz(f < 1? f : 1) {}
 
         virtual bool scatter(
             const Ray& r_in, const Hit_record& rec, Color& attenuation, Ray& scattered
@@ -13,6 +13,7 @@ class Metal : public Material {
 
     public:
         Color albedo;
+        double fuzz;
 };
 
 # endif

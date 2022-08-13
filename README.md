@@ -22,3 +22,10 @@ Pure diffusion
 Pure reflection
 ### Something about linking
 Material has a Hit_record member while Hittable_record has a Material member, must declare the class in x.h and include both x.h and y.h in .cpp
+### metal fuzz
+Pure reflection also has a fuzz, add fuzzy * random_vector().
+## Dielectrics
+has both reflection/scatter and refraction
+With Snell's law, we have $R^\prime_\perp=\frac{\eta}{\eta^\prime}(R+n\cos\theta)=\frac{\eta}{\eta^\prime}(R-R\cdot nn)$
+For full reflection's sake, must switch whether refract.
+Schlick's approximation

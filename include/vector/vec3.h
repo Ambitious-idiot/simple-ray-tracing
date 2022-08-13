@@ -96,6 +96,8 @@ inline Vec3 unit_vector(Vec3 v) {
 inline Vec3 reflect(const Vec3& v, const Vec3& n) {
     return v - 2*dot(v,n)*n;
 }
+Vec3 refract(const Vec3& uv, const Vec3& n, double eta_i, double eta_t);
+Vec3 refract(const Vec3& uv, const Vec3& n, double eta_divided);
 
 Vec3 random_in_unit_sphere();
 Vec3 random_unit_vector();

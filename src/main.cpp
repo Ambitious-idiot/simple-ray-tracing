@@ -4,6 +4,7 @@
 # include "camera.h"
 # include "metal.h"
 # include "lambertian.h"
+# include "dielectric.h"
 
 Color ray_color(const Ray& r, const Hittable& world, int depth) {
     Hit_record rec;
@@ -38,10 +39,17 @@ int main() {
     // World
 
     Hittable_list world;
-    auto material_center = make_shared<Lambertian>(Color(0.7, 0.3, 0.3));
-    auto material_left   = make_shared<Metal>(Color(0.8, 0.8, 0.8));
-    world.append(make_shared<Sphere>(Point3(0,0,-1), 0.5, material_center));
-    world.append(make_shared<Sphere>(Point3(0,-100.5,-1), 100, material_left));
+    auto material_ground = make_shared<Lambertian>(Color(0.8, 0.8, 0.0));
+    auto material_center = make_shared<Lambertian>(Color(0.1, 0.2, 0.5));
+    auto material_left   = make_shared<Dielectric>(1.5);
+    auto material_right  = make_shared<Metal>(Color(0.8, 0.6, 0.2), 0.0);
+
+    world.append(make_shared<Sphere>(Point3( 0.0, -100.5, -1.0), 100.0, material_ground));
+    world.append(make_shared<Sphere>(Point3( 0.0,    0.0, -1.0),   0.5, material_center));
+    world.append(make_shared<Sphere>(Point3(-1.0,    0.0, -1.0),   0.5, material_left));
+    world.append(make_shared<Sphere>(Point3(-1.0,    0.0, -1.0),  -0.4, material_left));
+    world.append(make_shared<Sphere>(Point3( 1.0,    0.0, -1.0),   0.5, material_right));
+
 
     // Camera
     Camera cam;

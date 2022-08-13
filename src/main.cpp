@@ -2,7 +2,6 @@
 # include "hittable_list.h"
 # include "sphere.h"
 # include "camera.h"
-# include "rtweekend.h"
 
 Color ray_color(const ray& r, const hittable& world, int depth) {
     hit_record rec;

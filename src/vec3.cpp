@@ -14,3 +14,7 @@ Vec3 random_in_unit_sphere() {
         return p;
     }
 }
+
+Vec3 random_unit_vector() {
+    return unit_vector(random_in_unit_sphere());
+}

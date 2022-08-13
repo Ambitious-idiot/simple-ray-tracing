@@ -6,4 +6,5 @@ add_executable(rtw ${SOURCES})
 target_include_directories(rtw
     PRIVATE
         ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/include/geometry
 )

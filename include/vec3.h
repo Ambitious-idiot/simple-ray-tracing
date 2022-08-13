@@ -89,6 +89,7 @@ inline Vec3 unit_vector(Vec3 v) {
 }
 
 Vec3 random_in_unit_sphere();
+Vec3 random_unit_vector();
 
 using Point3 = Vec3;
 using Color = Vec3;

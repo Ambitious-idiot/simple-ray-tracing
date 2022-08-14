@@ -5,6 +5,8 @@
 # include <iostream>
 
 using std::sqrt;
+using std::fabs;
+using std::fmin;
 
 class Vec3 {
     double value[3];
@@ -41,8 +43,8 @@ class Vec3 {
         }
 
         bool near_zero() const {
-                    const auto s = 1e-8;
-        return (fabs(x()) < s) && (fabs(y()) < s) && (fabs(z()) < s);
+            const auto s = 1e-8;
+            return (fabs(x()) < s) && (fabs(y()) < s) && (fabs(z()) < s);
         }
 
         static Vec3 random();

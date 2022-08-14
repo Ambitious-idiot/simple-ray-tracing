@@ -1,5 +1,6 @@
 # include "dielectric.h"
 # include "hittable.h"
+# include "vec3.h"
 
 bool Dielectric::scatter(const Ray  & r_in, const Hit_record& rec, Color& attenuation, Ray& scattered) const {
     attenuation = Color(1.0, 1.0, 1.0);

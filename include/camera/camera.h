@@ -19,9 +19,9 @@ class Camera {
             auto viewport_height = 2.0 * h;
             auto viewport_width = aspect_ratio * viewport_height;
 
-            auto w = unit_vector(lookfrom - lookat);
-            auto u = unit_vector(cross(vup, w));
-            auto v = cross(w, u);
+            w = unit_vector(lookfrom - lookat);
+            u = unit_vector(cross(vup, w));
+            v = cross(w, u);
 
             origin = lookfrom;
             horizontal = focus_dist * viewport_width * u;
@@ -30,6 +30,7 @@ class Camera {
 
             lens_radius = aperture / 2;
         }
+
 
         Ray get_ray(double s, double t) const {
             Vec3 rd = lens_radius * random_in_unit_disk();

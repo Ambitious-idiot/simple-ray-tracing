@@ -11,4 +11,5 @@ target_include_directories(rtw
         ${PROJECT_SOURCE_DIR}/include/camera
         ${PROJECT_SOURCE_DIR}/include/ray
         ${PROJECT_SOURCE_DIR}/include/vector
+        ${PROJECT_SOURCE_DIR}/include/color
 )

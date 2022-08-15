@@ -28,7 +28,6 @@ bool MovingSphere::hit(const Ray& r, double t_min, double t_max, HitRecord& rec)
     return true;
 }
 
-
 bool MovingSphere::bounding_box(double _time0, double _time1, AABB& output_box) const {
     AABB box0(
         center(_time0) - Vec3(radius, radius, radius),

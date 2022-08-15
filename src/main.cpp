@@ -51,26 +51,6 @@ HittableList random_scene() {
     return world;
 }
 
-Color ray_color(const Ray& r, const Hittable& world, int depth) {
-    HitRecord rec;
-
-    // If we've exceeded the ray bounce limit, no more light is gathered.
-    if (depth <= 0)
-        return Color(0,0,0);
-
-    if (world.hit(r, 0.001, infinity, rec)) {
-        Ray scattered;
-        Color attenuation;
-        if (rec.mat_ptr->scatter(r, rec, attenuation, scattered))
-            return attenuation * ray_color(scattered, world, depth-1);
-        return Color(0,0,0);
-    }
-
-    Vec3 unit_direction = unit_vector(r.direction());
-    auto t = 0.5*(unit_direction.y() + 1.0);
-    return (1.0-t)*Color(1.0, 1.0, 1.0) + t*Color(0.5, 0.7, 1.0);
-}
-
 int main() {
 
     // Image
@@ -81,7 +61,9 @@ int main() {
     const int max_depth = 50;
 
     // World
-    auto world = random_scene();
+    // auto world = random_scene();
+    // world with BVH
+    auto world = BVHNode(random_scene(), 0.0, 1.0);
 
     // Camera
     Point3 lookfrom(13,2,3);

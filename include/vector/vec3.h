@@ -19,7 +19,7 @@ class Vec3 {
         double y() const {return value[1];}
         double z() const {return value[2];}
 
-        Vec3 operator-() const {return Vec3(-value[0], value[1], value[2]);}
+        Vec3 operator-() const {return Vec3(-value[0], -value[1], -value[2]);}
         double operator[](int i) const {return value[i];}
         double& operator[](int i) {return value[i];}
 

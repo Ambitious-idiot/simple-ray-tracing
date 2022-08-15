@@ -2,20 +2,21 @@
 #define HITTABLE_LIST_H
 
 #include "hittable.h"
-#include "rtweekend.h"
 
 #include <memory>
 #include <vector>
 
-class Hittable_list : public Hittable {
+class HittableList : public Hittable {
     public:
-        Hittable_list() {}
+        HittableList() {}
 
         void clear() { objects.clear(); }
         void append(const shared_ptr<Hittable> &object) { objects.push_back(object); }
 
         virtual bool hit(
-            const Ray& r, double t_min, double t_max, Hit_record& rec) const override;
+            const Ray& r, double t_min, double t_max, HitRecord& rec) const override;
+
+        virtual bool bounding_box(double time0, double time1, AABB& output_box) const override;
 
     public:
         std::vector<shared_ptr<Hittable>> objects;

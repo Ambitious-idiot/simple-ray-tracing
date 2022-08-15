@@ -8,7 +8,7 @@ class Dielectric : public Material {
         Dielectric(double eta) : eta(eta) {}
 
         virtual bool scatter(
-            const Ray& r_in, const Hit_record& rec, Color& attenuation, Ray& scattered
+            const Ray& r_in, const HitRecord& rec, Color& attenuation, Ray& scattered
         ) const override;
 
     public:

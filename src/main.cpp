@@ -3,8 +3,8 @@
 # include "camera.h"
 # include "material.h"
 
-Hittable_list random_scene() {
-    Hittable_list world;
+HittableList random_scene() {
+    HittableList world;
 
     auto ground_material = make_shared<Lambertian>(Color(0.5, 0.5, 0.5));
     world.append(make_shared<Sphere>(Point3(0,-1000,0), 1000, ground_material));
@@ -52,7 +52,7 @@ Hittable_list random_scene() {
 }
 
 Color ray_color(const Ray& r, const Hittable& world, int depth) {
-    Hit_record rec;
+    HitRecord rec;
 
     // If we've exceeded the ray bounce limit, no more light is gathered.
     if (depth <= 0)

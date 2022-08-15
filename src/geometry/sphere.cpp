@@ -1,6 +1,6 @@
 # include "sphere.h"
 
-bool Sphere::hit(const Ray& r, double t_min, double t_max, Hit_record& rec) const {
+bool Sphere::hit(const Ray& r, double t_min, double t_max, HitRecord& rec) const {
     Vec3 oc = r.origin() - center;
     auto a = r.direction().len_square();
     auto half_b = dot(oc, r.direction());
@@ -25,5 +25,10 @@ bool Sphere::hit(const Ray& r, double t_min, double t_max, Hit_record& rec) cons
     rec.set_face_normal(r, outward_normal);
     rec.mat_ptr = mat_ptr;
 
+    return true;
+}
+
+bool Sphere::bounding_box(double time0, double time1, AABB &output_box) const {
+    output_box = AABB(center-Vec3(radius, radius, radius), center+Vec3(radius, radius, radius));
     return true;
 }

@@ -24,7 +24,7 @@ Pure reflection
 Material has a Hit_record member while Hittable_record has a Material member, must declare the class in x.h and include both x.h and y.h in .cpp
 ### metal fuzz
 Pure reflection also has a fuzz, add fuzzy * random_vector().
-## Dielectrics
+### Dielectrics
 has both reflection/scatter and refraction
 With Snell's law, we have $R^\prime_\perp=\frac{\eta}{\eta^\prime}(R+n\cos\theta)=\frac{\eta}{\eta^\prime}(R-R\cdot nn)$
 For full reflection's sake, must switch whether refract.
@@ -36,3 +36,13 @@ set the lookfrom and the view square
 # The Next Week
 ## Motion blur
 store existing time of rays and keep the camera in track of time. add moving objects
+## Bounding volume hierarchies
+accelerate ray-obj intersection computing.
+Split the space into non-intersection parts to build the tree.
+### AABBs
+every hittables' AABBs can be solved and the hittable list's is the union of the members'.
+### BVH Tree
+build two-branch tree(kd tree) of hittables and the leaves are hittables except BVHNode while the others are all the latter. Hit-examination is actually a pre-order traversal. The building scheme:
+1. randomly choose an axis
+2. sort the primitives (using std::sort)
+3. put half in each subtree

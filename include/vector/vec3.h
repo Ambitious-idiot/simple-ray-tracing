@@ -7,6 +7,7 @@
 using std::sqrt;
 using std::fabs;
 using std::fmin;
+using std::fmax;
 
 class Vec3 {
     double value[3];

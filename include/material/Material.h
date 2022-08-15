@@ -3,12 +3,12 @@
 
 #include "rtweekend.h"
 
-struct Hit_record;
+struct HitRecord;
 
 class Material {
     public:
         virtual bool scatter(
-            const Ray& r_in, const Hit_record& rec, Color& attenuation, Ray& scattered
+            const Ray& r_in, const HitRecord& rec, Color& attenuation, Ray& scattered
         ) const = 0;
 };
 

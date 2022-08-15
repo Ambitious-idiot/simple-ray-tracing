@@ -1,10 +1,7 @@
 # include "color.h"
-# include "hittable_list.h"
-# include "sphere.h"
+# include "geometry.h"
 # include "camera.h"
-# include "metal.h"
-# include "lambertian.h"
-# include "dielectric.h"
+# include "material.h"
 
 Hittable_list random_scene() {
     Hittable_list world;
@@ -24,7 +21,9 @@ Hittable_list random_scene() {
                     // diffuse
                     auto albedo = Color::random() * Color::random();
                     sphere_material = make_shared<Lambertian>(albedo);
-                    world.append(make_shared<Sphere>(center, 0.2, sphere_material));
+                    auto center2 = center + Vec3(0, random_double(0, 0.5), 0);
+                    world.append(make_shared<MovingSphere>(
+                        center, center2, 0.0, 1.0, 0.2, sphere_material));
                 } else if (choose_mat < 0.95) {
                     // metal
                     auto albedo = Color::random(0.5, 1);
@@ -75,8 +74,8 @@ Color ray_color(const Ray& r, const Hittable& world, int depth) {
 int main() {
 
     // Image
-    const auto aspect_ratio = 3.0 / 2.0;
-    const int image_width = 1200;
+    const auto aspect_ratio = 16.0 / 9.0;
+    const int image_width = 400;
     const int image_height = static_cast<int>(image_width / aspect_ratio);
     const int samples_per_pixel = 100;
     const int max_depth = 50;
@@ -91,7 +90,7 @@ int main() {
     auto dist_to_focus = 10;
     auto aperture = 0.1;
 
-    Camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
+    Camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
 
     // Render
 

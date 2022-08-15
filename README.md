@@ -1,4 +1,4 @@
-# Ray Tracing in One Weekend Notes
+# Ray Tracing in One Weekend
 ## Output a PPM image
 Write the rgb triplets to the file with the redirection '>'
 ## Implement point, color and ray as Vec3
@@ -33,3 +33,6 @@ Schlick's approximation
 fov
 set the lookfrom and the view square
 ## Defocus blur
+# The Next Week
+## Motion blur
+store existing time of rays and keep the camera in track of time. add moving objects

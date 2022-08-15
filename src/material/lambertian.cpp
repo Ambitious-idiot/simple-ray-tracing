@@ -5,7 +5,7 @@ bool Lambertian::scatter(const Ray& r_in, const Hit_record& rec, Color& attenuat
     auto scatter_direction = rec.normal + random_unit_vector();
     if (scatter_direction.near_zero())
         scatter_direction = rec.normal;
-    scattered = Ray(rec.p, scatter_direction);
+    scattered = Ray(rec.p, scatter_direction, r_in.time());
     attenuation = albedo;
     return true;
 }

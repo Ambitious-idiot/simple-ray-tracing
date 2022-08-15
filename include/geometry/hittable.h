@@ -2,7 +2,7 @@
 # define HITTABLE_H
 
 # include "rtweekend.h"
-# include "material.h"
+# include "Material.h"
 
 struct Hit_record {
     Point3 p;

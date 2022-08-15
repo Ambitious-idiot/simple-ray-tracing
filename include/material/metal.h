@@ -1,7 +1,7 @@
 # ifndef METAL_H
 # define METAL_H
 
-# include "material.h"
+# include "Material.h"
 
 class Metal : public Material {
     public:

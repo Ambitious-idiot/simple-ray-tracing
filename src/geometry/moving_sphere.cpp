@@ -1,7 +1,7 @@
-# include "sphere.h"
+# include "moving_sphere.h"
 
-bool Sphere::hit(const Ray& r, double t_min, double t_max, Hit_record& rec) const {
-    Vec3 oc = r.origin() - center;
+bool MovingSphere::hit(const Ray& r, double t_min, double t_max, Hit_record& rec) const {
+    Vec3 oc = r.origin() - center(r.time());
     auto a = r.direction().len_square();
     auto half_b = dot(oc, r.direction());
     auto c = oc.len_square() - radius*radius;
@@ -20,8 +20,8 @@ bool Sphere::hit(const Ray& r, double t_min, double t_max, Hit_record& rec) cons
 
     rec.t = root;
     rec.p = r.at(rec.t);
-    rec.normal = (rec.p - center) / radius;
-    Vec3 outward_normal = (rec.p - center) / radius;
+    rec.normal = (rec.p - center(r.time())) / radius;
+    Vec3 outward_normal = (rec.p - center(r.time())) / radius;
     rec.set_face_normal(r, outward_normal);
     rec.mat_ptr = mat_ptr;
 

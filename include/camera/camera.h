@@ -4,6 +4,14 @@
 #include "rtweekend.h"
 
 class Camera {
+    Point3 origin;
+    Point3 lower_left_corner;
+    Vec3 horizontal;
+    Vec3 vertical;
+    Vec3 u, v, w;
+    double lens_radius;
+    double time0, time1;
+
     public:
         Camera(
             Point3 lookfrom,
@@ -12,7 +20,9 @@ class Camera {
             double vfov, // vertical field-of-view in degrees
             double aspect_ratio,
             double aperture,
-            double focus_dist
+            double focus_dist,
+            double _time0=0,
+            double _time1=0
         ) {
             auto theta = degrees_to_radians(vfov);
             auto h = tan(theta/2);
@@ -29,6 +39,8 @@ class Camera {
             lower_left_corner = origin - horizontal/2 - vertical/2 - focus_dist*w;
 
             lens_radius = aperture / 2;
+            time0 = _time0;
+            time1 = _time1;
         }
 
 
@@ -38,17 +50,10 @@ class Camera {
 
             return Ray(
                 origin + offset,
-                lower_left_corner + s*horizontal + t*vertical - origin - offset
+                lower_left_corner + s*horizontal + t*vertical - origin - offset,
+                random_double(time0, time1)
             );
         }
-
-    private:
-        Point3 origin;
-        Point3 lower_left_corner;
-        Vec3 horizontal;
-        Vec3 vertical;
-        Vec3 u, v, w;
-        double lens_radius;
 };
 
 #endif

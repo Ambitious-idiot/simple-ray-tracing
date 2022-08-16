@@ -2,7 +2,10 @@
 # include "geometry.h"
 # include "camera.h"
 # include "material.h"
+#include <cstdlib>
+# include <unistd.h>
 
+// Scenes
 HittableList random_scene() {
     HittableList world;
 
@@ -21,7 +24,7 @@ HittableList random_scene() {
                     // diffuse
                     auto albedo = Color::random() * Color::random();
                     sphere_material = make_shared<Lambertian>(albedo);
-                    auto center2 = center + Vec3(0, random_double(0, 0.5), 0);
+                    auto center2 = center + Vec3(0, random_double(0, 0.2), 0);
                     world.append(make_shared<MovingSphere>(
                         center, center2, 0.0, 1.0, 0.2, sphere_material));
                 } else if (choose_mat < 0.95) {
@@ -51,19 +54,59 @@ HittableList random_scene() {
     return world;
 }
 
-int main() {
+HittableList two_spheres() {
+    HittableList objs;
+    auto checker = make_shared<CheckerTexture>(Color(0.2, 0.3, 0.1), Color(0.9, 0.9, 0.9));
+    objs.append(make_shared<Sphere>(Point3(0, -10, 0), 10, make_shared<Lambertian>(checker)));
+    objs.append(make_shared<Sphere>(Point3(0, 10, 0), 10, make_shared<Lambertian>(checker)));
+    return objs;
+}
 
-    // Image
-    const auto aspect_ratio = 16.0 / 9.0;
-    const int image_width = 400;
-    const int image_height = static_cast<int>(image_width / aspect_ratio);
-    const int samples_per_pixel = 100;
-    const int max_depth = 50;
+
+int main(int argc, char* argv[]) {
+    // variable declarations
+    HittableList (*world_constructors[2])() = {random_scene, two_spheres};
+    HittableList (*world_constructor)() = random_scene;
+    double t_start = 0;
+    double t_end = 0;
+    int image_width = 1024;
+    int image_height = 576;
+    int samples_per_pixel = 200;
+    int max_depth = 50;
+
+    // read cmd args
+    int ch;
+    while ((ch = getopt(argc, argv, "c:s:e:w:h:p:d:")) != -1)
+        switch (ch) {
+            case 'c':
+                world_constructor = world_constructors[atoi(optarg)];
+                break;
+            case 's':
+                t_start = atof(optarg);
+                break;
+            case 'e':
+                t_end = atof(optarg);
+                break;
+            case 'w':
+                image_width = atoi(optarg);
+                break;
+            case 'h':
+                image_height = atoi(optarg);
+                break;
+            case 'p':
+                samples_per_pixel = atoi(optarg);
+                break;
+            case 'd':
+                max_depth = atoi(optarg);
+                break;
+            default:
+                abort();
+        }
+
+    const auto aspect_ratio = image_width/image_height;
 
     // World
-    // auto world = random_scene();
-    // world with BVH
-    auto world = BVHNode(random_scene(), 0.0, 1.0);
+    auto world = BVHNode(world_constructor(), t_start, t_end);
 
     // Camera
     Point3 lookfrom(13,2,3);

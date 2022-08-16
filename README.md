@@ -47,3 +47,5 @@ build two-branch tree(kd tree) of hittables and the leaves are hittables except 
 2. sort the primitives (using std::sort)
 3. put half in each subtree
 Compare the program with and without BVH, the same image is rendered in 10m6s without BVH while in 59s with BVH.
+## Texture
+build class Texture, add uv-solving function in Sphere::hit, insert texture to material::scatter.

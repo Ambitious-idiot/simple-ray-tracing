@@ -17,6 +17,8 @@ class Sphere : public Hittable {
             const Ray& r, double t_min, double t_max, HitRecord& rec) const override;
 
         virtual bool bounding_box(double time0, double time1, AABB& output_box) const override;
+
+        static void get_uv(const Point3& p, double& u, double& v);
 };
 
 #endif

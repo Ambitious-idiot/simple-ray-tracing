@@ -23,6 +23,7 @@ bool MovingSphere::hit(const Ray& r, double t_min, double t_max, HitRecord& rec)
     rec.normal = (rec.p - center(r.time())) / radius;
     Vec3 outward_normal = (rec.p - center(r.time())) / radius;
     rec.set_face_normal(r, outward_normal);
+    get_uv(outward_normal, rec.u, rec.v);
     rec.mat_ptr = mat_ptr;
 
     return true;
@@ -37,4 +38,11 @@ bool MovingSphere::bounding_box(double _time0, double _time1, AABB& output_box) 
         center(_time1) + Vec3(radius, radius, radius));
     output_box = surrounding_box(box0, box1);
     return true;
+}
+
+void MovingSphere::get_uv(const Point3 &p, double &u, double &v) {
+    auto phi = atan2(-p.z(), p.x()) + pi;
+    u = phi / (2*pi);
+    auto theta = acos(-p.y());
+    v = theta / pi;
 }

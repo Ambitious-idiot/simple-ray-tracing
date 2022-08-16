@@ -6,10 +6,11 @@ add_executable(rtw ${SOURCES})
 target_include_directories(rtw
     PRIVATE
         ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/include/vector
+        ${PROJECT_SOURCE_DIR}/include/color
+        ${PROJECT_SOURCE_DIR}/include/ray
         ${PROJECT_SOURCE_DIR}/include/geometry
         ${PROJECT_SOURCE_DIR}/include/material
         ${PROJECT_SOURCE_DIR}/include/camera
-        ${PROJECT_SOURCE_DIR}/include/ray
-        ${PROJECT_SOURCE_DIR}/include/vector
-        ${PROJECT_SOURCE_DIR}/include/color
+        ${PROJECT_SOURCE_DIR}/include/texture
 )

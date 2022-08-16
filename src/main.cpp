@@ -6,8 +6,8 @@
 HittableList random_scene() {
     HittableList world;
 
-    auto ground_material = make_shared<Lambertian>(Color(0.5, 0.5, 0.5));
-    world.append(make_shared<Sphere>(Point3(0,-1000,0), 1000, ground_material));
+    auto checker = std::make_shared<CheckerTexture>(Color(0.2, 0.3, 0.1), Color(0.9, 0.9, 0.9));
+    world.append(make_shared<Sphere>(Point3(0,-1000,0), 1000, make_shared<Lambertian>(checker)));
 
     for (int a = -11; a < 11; a++) {
         for (int b = -11; b < 11; b++) {

@@ -1,7 +1,7 @@
 # ifndef _MATERIAL_H
 # define _MATERIAL_H
 
-# include "rtweekend.h"
+# include "texture.h"
 
 struct HitRecord;
 

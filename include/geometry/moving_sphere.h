@@ -22,6 +22,7 @@ class MovingSphere : public Hittable {
             return center0 + ((time - time0) / (time1 - time0))*(center1 - center0);
         }
 
+        static void get_uv(const Point3& p, double& u, double& v);
     public:
         Point3 center0, center1;
         double time0, time1;

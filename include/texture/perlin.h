@@ -2,6 +2,7 @@
 # define PERLIN_H
 
 # include "Texture.h"
+#include "vec3.h"
 
 class Perlin {
     static const int point_count = 256;
@@ -40,16 +41,19 @@ class Turbulence: public NoiseTexture {
         Turbulence() {}
         Turbulence(double s, int d=7): NoiseTexture(s), depth(d) {}
 
+        virtual Color value(double u, double v, const Point3& p) const override;
+};
+
+class Marble: public Turbulence {
+    int turb_weight;
+
+    public:
+        Marble() {}
+        Marble(double s, int t_w=5, int d=7): Turbulence(s, d), turb_weight(t_w) {}
+
         virtual Color value(double u, double v, const Point3& p) const override {
-            Point3 temp_p = p * scale;
-            double ret = 0;
-            double weight = 1;
-            for (int i = 0; i < depth; i ++) {
-                ret += weight * noise.noise(temp_p);
-                weight *= 0.5;
-                temp_p *= 2;
-            }
-            return Color(1, 1, 1) * fabs(ret);
+            return Color(0.5, 0.5, 0.5) * (1+sin(scale*p.z()))
+                + turb_weight * Turbulence::value(u, v, p);
         }
 };
 

@@ -63,8 +63,8 @@ HittableList two_spheres() {
 
 HittableList two_perlin_spheres() {
     HittableList objs;
-    auto texture0 = make_shared<Turbulence>(10);
-    auto texture1 = make_shared<CheckerTexture>(Color(0.3, 0.5, 0.8), Color(0.8, 0.5, 0.3));
+    auto texture0 = make_shared<Turbulence>(4);
+    auto texture1 = make_shared<Marble>(5);
     objs.append(make_shared<Sphere>(Point3(0, -1000, 0), 1000, make_shared<Lambertian>(texture0)));
     objs.append(make_shared<Sphere>(Point3(0, 2, 0), 2, make_shared<Lambertian>(texture1)));
     return objs;

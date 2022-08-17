@@ -68,3 +68,15 @@ int* Perlin::perlin_generate_perm() {
     permute(p, point_count);
     return p;
 }
+
+Color Turbulence::value(double u, double v, const Point3& p) const {
+    Point3 temp_p = p * scale;
+    double ret = 0;
+    double weight = 1;
+    for (int i = 0; i < depth; i ++) {
+        ret += weight * noise.noise(temp_p);
+        weight *= 0.5;
+        temp_p *= 2;
+    }
+    return Color(1, 1, 1) * fabs(ret);
+}

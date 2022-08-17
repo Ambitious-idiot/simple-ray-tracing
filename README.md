@@ -49,4 +49,5 @@ build two-branch tree(kd tree) of hittables and the leaves are hittables except 
 Compare the program with and without BVH, the same image is rendered in 10m6s without BVH while in 59s with BVH.
 ## Texture
 build class Texture, add uv-solving function in Sphere::hit, insert texture to material::scatter.
-## 
+## Perlin Noise
+looks like blurred white noise. It takes a 3D point as input and the result is repeatable. Nearby points return similar numbers.

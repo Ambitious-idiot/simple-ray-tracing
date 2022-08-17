@@ -3,5 +3,6 @@
 
 # include "solid_color.h"
 # include "checker_texture.h"
+# include "perlin.h"
 
 # endif

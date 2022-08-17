@@ -2,7 +2,6 @@
 # include "geometry.h"
 # include "camera.h"
 # include "material.h"
-#include <cstdlib>
 # include <unistd.h>
 
 // Scenes
@@ -62,17 +61,27 @@ HittableList two_spheres() {
     return objs;
 }
 
+HittableList two_perlin_spheres() {
+    HittableList objs;
+    auto texture = make_shared<NoiseTexture>();
+    objs.append(make_shared<Sphere>(Point3(0, -1000, 0), 1000, make_shared<Lambertian>(texture)));
+    objs.append(make_shared<Sphere>(Point3(0, 2, 0), 2, make_shared<Lambertian>(texture)));
+    return objs;
+}
 
+// main
 int main(int argc, char* argv[]) {
     // variable declarations
-    HittableList (*world_constructors[2])() = {random_scene, two_spheres};
+    HittableList (*world_constructors[])() = {
+        random_scene, two_spheres, two_perlin_spheres
+    };
     HittableList (*world_constructor)() = random_scene;
     double t_start = 0;
     double t_end = 0;
-    int image_width = 1024;
-    int image_height = 576;
-    int samples_per_pixel = 200;
-    int max_depth = 50;
+    int image_width = 224;
+    int image_height = 144;
+    int samples_per_pixel = 500;
+    int max_depth = 100;
 
     // read cmd args
     int ch;

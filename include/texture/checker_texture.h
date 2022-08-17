@@ -1,7 +1,7 @@
-# ifndef CHECKER_TEXTURE_H
-# define CHECKER_TEXTURE_H
+#ifndef CHECKER_TEXTURE_H
+#define CHECKER_TEXTURE_H
 
-# include "solid_color.h"
+#include "solid_color.h"
 
 class CheckerTexture: public Texture {
     shared_ptr<Texture> odd;
@@ -20,4 +20,4 @@ class CheckerTexture: public Texture {
         }
 };
 
-# endif
+#endif

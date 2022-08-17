@@ -1,8 +1,8 @@
-# ifndef BVH_H
-# define BVH_H
+#ifndef BVH_H
+#define BVH_H
 
-# include "hittable_list.h"
-# include <vector>
+#include "hittable_list.h"
+#include <vector>
 
 class BVHNode: public Hittable {
     public:
@@ -48,4 +48,4 @@ inline bool box_z_compare (const shared_ptr<Hittable> &a, const shared_ptr<Hitta
     return box_compare(a, b, 2);
 }
 
-# endif
+#endif

@@ -1,7 +1,7 @@
-# ifndef _MATERIAL_H
-# define _MATERIAL_H
+#ifndef _MATERIAL_H
+#define _MATERIAL_H
 
-# include "texture.h"
+#include "texture.h"
 
 struct HitRecord;
 
@@ -12,4 +12,4 @@ class Material {
         ) const = 0;
 };
 
-# endif
+#endif

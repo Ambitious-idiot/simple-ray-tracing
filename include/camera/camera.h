@@ -1,7 +1,7 @@
-# ifndef CAMERA_H
-# define CAMERA_H
+#ifndef CAMERA_H
+#define CAMERA_H
 
-# include "rtweekend.h"
+#include "rtweekend.h"
 
 class Camera {
     Point3 origin;

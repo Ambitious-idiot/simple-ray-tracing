@@ -1,8 +1,7 @@
-# ifndef PERLIN_H
-# define PERLIN_H
+#ifndef PERLIN_H
+#define PERLIN_H
 
-# include "Texture.h"
-#include "vec3.h"
+#include "Texture.h"
 
 class Perlin {
     static const int point_count = 256;
@@ -57,4 +56,4 @@ class Marble: public Turbulence {
         }
 };
 
-# endif
+#endif

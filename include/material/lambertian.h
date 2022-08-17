@@ -1,7 +1,7 @@
-# ifndef LAMBERTIAN_H
-# define LAMBERTIAN_H
+#ifndef LAMBERTIAN_H
+#define LAMBERTIAN_H
 
-# include "Material.h"
+#include "Material.h"
 
 class Lambertian : public Material {
     public:
@@ -16,4 +16,4 @@ class Lambertian : public Material {
         shared_ptr<Texture> albedo;
 };
 
-# endif
+#endif

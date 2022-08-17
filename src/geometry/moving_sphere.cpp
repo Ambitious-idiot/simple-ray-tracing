@@ -1,4 +1,4 @@
-# include "moving_sphere.h"
+#include "moving_sphere.h"
 
 bool MovingSphere::hit(const Ray& r, double t_min, double t_max, HitRecord& rec) const {
     Vec3 oc = r.origin() - center(r.time());

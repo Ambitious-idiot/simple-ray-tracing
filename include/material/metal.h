@@ -1,7 +1,7 @@
 # ifndef METAL_H
-# define METAL_H
+#define METAL_H
 
-# include "Material.h"
+#include "Material.h"
 
 class Metal : public Material {
     public:
@@ -17,4 +17,4 @@ class Metal : public Material {
         double fuzz;
 };
 
-# endif
+#endif

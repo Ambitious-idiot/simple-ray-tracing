@@ -1,8 +1,8 @@
-# ifndef VEC3_H
-# define VEC3_H
+#ifndef VEC3_H
+#define VEC3_H
 
-# include <cmath>
-# include <iostream>
+#include <cmath>
+#include <iostream>
 
 using std::sqrt;
 using std::fabs;
@@ -109,4 +109,4 @@ Vec3 random_in_unit_disk();
 using Point3 = Vec3;
 using Color = Vec3;
 
-# endif
+#endif

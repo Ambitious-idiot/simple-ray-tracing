@@ -57,3 +57,5 @@ To get higher-frequency texture, add arg scale.
 To make the texture less blocky looking, use random unit vectors rather than doubles. When calculating noise, use dot(rand_vec, weight).
 Turbulence: sum of Perlin noise with different frequencies.
 Marble: add regular phase change to turbulence.
+## Image texture
+convert image to u-v so that the size of texture map doesn't suffer from the resolution. The conversion is totally a resizing transform.

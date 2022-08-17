@@ -1,7 +1,7 @@
-# ifndef AABB_H
-# define AABB_H
+#ifndef AABB_H
+#define AABB_H
 
-# include "rtweekend.h"
+#include "rtweekend.h"
 
 class AABB {
     public:
@@ -22,4 +22,4 @@ class AABB {
 
 AABB surrounding_box(AABB box0, AABB box1);
 
-# endif
+#endif

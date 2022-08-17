@@ -1,6 +1,6 @@
-# include "metal.h"
-# include "hittable.h"
-# include "vec3.h"
+#include "metal.h"
+#include "hittable.h"
+#include "vec3.h"
 
 bool Metal::scatter(const Ray& r_in, const HitRecord& rec, Color& attenuation, Ray& scattered) const {
     Vec3 reflected = reflect(unit_vector(r_in.direction()), rec.normal);

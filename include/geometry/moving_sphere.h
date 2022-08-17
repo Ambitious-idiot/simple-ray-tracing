@@ -1,8 +1,7 @@
-# ifndef MOVING_SPHERE_H
-# define MOVING_SPHERE_H
+#ifndef MOVING_SPHERE_H
+#define MOVING_SPHERE_H
 
-# include "hittable.h"
-
+#include "hittable.h"
 
 class MovingSphere : public Hittable {
     public:
@@ -30,4 +29,4 @@ class MovingSphere : public Hittable {
         shared_ptr<Material> mat_ptr;
 };
 
-# endif
+#endif

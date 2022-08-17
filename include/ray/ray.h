@@ -1,7 +1,7 @@
-# ifndef RAY_H
-# define RAY_H
+#ifndef RAY_H
+#define RAY_H
 
-# include "vec3.h"
+#include "vec3.h"
 
 class Ray {
     Point3 orig;
@@ -23,4 +23,4 @@ class Ray {
         }
 };
 
-# endif
+#endif

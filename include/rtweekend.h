@@ -1,10 +1,10 @@
-# ifndef RTWEEKEND_H
-# define RTWEEKEND_H
+#ifndef RTWEEKEND_H
+#define RTWEEKEND_H
 
-# include <cmath>
-# include <cstdlib>
-# include <limits>
-# include <memory>
+#include <cmath>
+#include <cstdlib>
+#include <limits>
+#include <memory>
 
 
 // Usings
@@ -46,7 +46,6 @@ inline double clamp(double x, double min, double max) {
     return x;
 }
 
-# include "ray.h"
-# include "vec3.h"
- 
-# endif
+#include "ray.h"
+
+#endif

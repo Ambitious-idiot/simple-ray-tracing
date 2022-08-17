@@ -1,5 +1,4 @@
-# include "perlin.h"
-#include "vec3.h"
+#include "perlin.h"
 
 void permute(int* p, int n) {
     for (int i = n-1; i > 0; i --) {

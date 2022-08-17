@@ -1,7 +1,7 @@
-# ifndef SOLID_COLOR_H
-# define SOLID_COLOR_H
+#ifndef SOLID_COLOR_H
+#define SOLID_COLOR_H
 
-# include "Texture.h"
+#include "Texture.h"
 
 class SolidColor: public Texture {
     Color color;
@@ -17,4 +17,4 @@ class SolidColor: public Texture {
         }
 };
 
-# endif
+#endif

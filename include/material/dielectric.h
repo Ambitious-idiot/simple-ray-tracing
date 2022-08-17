@@ -1,7 +1,7 @@
-# ifndef DIELECTRIC_H
-# define DIELECTRIC_H
+#ifndef DIELECTRIC_H
+#define DIELECTRIC_H
 
-# include "Material.h"
+#include "Material.h"
 
 class Dielectric : public Material {
     public:
@@ -18,4 +18,4 @@ class Dielectric : public Material {
         static double reflectance(double cosine, double ref_idx);
 };
 
-# endif
+#endif

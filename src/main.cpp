@@ -1,8 +1,8 @@
-# include "color.h"
-# include "geometry.h"
-# include "camera.h"
-# include "material.h"
-# include <unistd.h>
+#include "color.h"
+#include "geometry.h"
+#include "camera.h"
+#include "material.h"
+#include <unistd.h>
 
 // Scenes
 HittableList random_scene() {
@@ -70,11 +70,20 @@ HittableList two_perlin_spheres() {
     return objs;
 }
 
+HittableList earth() {
+    auto earth_texture = make_shared<ImageTexture>("imgs/earthmap.jpg");
+    auto earth_surface = make_shared<Lambertian>(earth_texture);
+    auto globe = make_shared<Sphere>(Point3(0,0,0), 2, earth_surface);
+    auto world = HittableList();
+    world.append(globe);
+    return world;
+}
+
 // main
 int main(int argc, char* argv[]) {
     // variable declarations
     HittableList (*world_constructors[])() = {
-        random_scene, two_spheres, two_perlin_spheres
+        random_scene, two_spheres, two_perlin_spheres, earth
     };
     HittableList (*world_constructor)() = random_scene;
     int img_width = 400;

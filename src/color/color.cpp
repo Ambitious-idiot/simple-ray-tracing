@@ -1,4 +1,4 @@
-# include "color.h"
+#include "color.h"
 
 void write_color(std::ostream &out, const Color& px_color, int samples_per_pixel) {
     auto r = px_color.x();

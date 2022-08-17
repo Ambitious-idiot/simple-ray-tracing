@@ -1,8 +1,8 @@
-# ifndef HITTABLE_H
-# define HITTABLE_H
+#ifndef HITTABLE_H
+#define HITTABLE_H
 
-# include "aabb.h"
-# include "Material.h"
+#include "aabb.h"
+#include "Material.h"
 
 struct HitRecord {
     Point3 p;
@@ -24,4 +24,4 @@ class Hittable {
         virtual bool bounding_box(double time0, double time1, AABB& output_box) const = 0;
 };
 
-# endif
+#endif

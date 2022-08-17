@@ -1,5 +1,5 @@
-# include "lambertian.h"
-# include "hittable.h"
+#include "lambertian.h"
+#include "hittable.h"
 
 bool Lambertian::scatter(const Ray& r_in, const HitRecord& rec, Color& attenuation, Ray& scattered) const {
     auto scatter_direction = rec.normal + random_unit_vector();

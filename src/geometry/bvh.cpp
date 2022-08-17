@@ -1,5 +1,5 @@
-# include "bvh.h"
-# include <algorithm>
+#include "bvh.h"
+#include <algorithm>
 
 BVHNode::BVHNode(
     const std::vector<shared_ptr<Hittable>> &objs,

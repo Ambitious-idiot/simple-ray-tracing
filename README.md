@@ -55,3 +55,4 @@ To smooth the output, apply tri-lerp to the output.
 To address the Mach bands, use Hermitian smoothing.
 To get higher-frequency texture, add arg scale.
 To make the texture less blocky looking, use random unit vectors rather than doubles. When calculating noise, use dot(rand_vec, weight).
+Turbulence: sum of Perlin noise with different frequencies.

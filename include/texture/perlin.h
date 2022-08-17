@@ -2,10 +2,11 @@
 # define PERLIN_H
 
 # include "Texture.h"
+#include "vec3.h"
 
 class Perlin {
     static const int point_count = 256;
-    double* random_floats;
+    Vec3* random_vecs;
     int* perm_x, * perm_y, * perm_z;
 
     public:
@@ -28,7 +29,7 @@ class NoiseTexture: public Texture {
         NoiseTexture(double s): scale(s) {}
 
         virtual Color value(double u, double v, const Point3& p) const override {
-            return Color(1, 1, 1) * noise.noise(scale*p);
+            return Color(0.5, 0.5, 0.5) * (1 + noise.noise(scale*p));
         }
 };
 

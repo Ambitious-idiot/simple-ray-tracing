@@ -76,46 +76,39 @@ int main(int argc, char* argv[]) {
         random_scene, two_spheres, two_perlin_spheres
     };
     HittableList (*world_constructor)() = random_scene;
-    double t_start = 0;
-    double t_end = 0;
-    int image_width = 224;
-    int image_height = 144;
-    int samples_per_pixel = 500;
-    int max_depth = 100;
+    int img_width = 400;
+    int spp = 100;
+    int m_depth = 50;
 
     // read cmd args
     int ch;
-    while ((ch = getopt(argc, argv, "c:s:e:w:h:p:d:")) != -1)
+    while ((ch = getopt(argc, argv, "c:w:p:d:")) != -1)
         switch (ch) {
             case 'c':
                 world_constructor = world_constructors[atoi(optarg)];
                 break;
-            case 's':
-                t_start = atof(optarg);
-                break;
-            case 'e':
-                t_end = atof(optarg);
-                break;
             case 'w':
-                image_width = atoi(optarg);
-                break;
-            case 'h':
-                image_height = atoi(optarg);
+                img_width = atoi(optarg);
                 break;
             case 'p':
-                samples_per_pixel = atoi(optarg);
+                spp = atoi(optarg);
                 break;
             case 'd':
-                max_depth = atoi(optarg);
+                m_depth = atoi(optarg);
                 break;
             default:
                 abort();
         }
 
-    const auto aspect_ratio = image_width/image_height;
+    // Image
+    const auto aspect_ratio = 16.0 / 9.0;
+    const int image_width = img_width;
+    const int image_height = static_cast<int>(image_width / aspect_ratio);
+    const int samples_per_pixel = spp;
+    const int max_depth = m_depth;
 
     // World
-    auto world = BVHNode(world_constructor(), t_start, t_end);
+    auto world = BVHNode(world_constructor(), 0.0, 1.0);
 
     // Camera
     Point3 lookfrom(13,2,3);

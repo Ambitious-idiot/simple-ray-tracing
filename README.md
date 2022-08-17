@@ -51,3 +51,5 @@ Compare the program with and without BVH, the same image is rendered in 10m6s wi
 build class Texture, add uv-solving function in Sphere::hit, insert texture to material::scatter.
 ## Perlin Noise
 looks like blurred white noise. It takes a 3D point as input and the result is repeatable. Nearby points return similar numbers.
+To smooth the output, apply tri-lerp to the output.
+To address the Mach bands, use Hermitian smoothing.

@@ -16,7 +16,6 @@ class Perlin {
 
     private:
         static int* perlin_generate_perm();
-        static void permute(int* p, int n);
 };
 
 

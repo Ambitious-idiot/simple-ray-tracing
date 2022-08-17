@@ -59,3 +59,5 @@ Turbulence: sum of Perlin noise with different frequencies.
 Marble: add regular phase change to turbulence.
 ## Image texture
 convert image to u-v so that the size of texture map doesn't suffer from the resolution. The conversion is totally a resizing transform.
+## Mixed texture
+NOT IN THE BOOKS try to bind several textures together to form a new texture.

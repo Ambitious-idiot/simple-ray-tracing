@@ -5,5 +5,6 @@
 #include "checker_texture.h"
 #include "perlin.h"
 #include "image_texture.h"
+#include "mixed_texture.h"
 
 #endif

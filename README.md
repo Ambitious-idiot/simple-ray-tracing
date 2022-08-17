@@ -53,3 +53,4 @@ build class Texture, add uv-solving function in Sphere::hit, insert texture to m
 looks like blurred white noise. It takes a 3D point as input and the result is repeatable. Nearby points return similar numbers.
 To smooth the output, apply tri-lerp to the output.
 To address the Mach bands, use Hermitian smoothing.
+To get higher-frequency texture, add arg scale.

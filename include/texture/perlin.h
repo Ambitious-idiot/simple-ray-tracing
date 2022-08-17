@@ -21,12 +21,14 @@ class Perlin {
 
 class NoiseTexture: public Texture {
     Perlin noise;
+    double scale;
 
     public:
         NoiseTexture() {}
+        NoiseTexture(double s): scale(s) {}
 
         virtual Color value(double u, double v, const Point3& p) const override {
-            return Color(1, 1, 1) * noise.noise(p);
+            return Color(1, 1, 1) * noise.noise(scale*p);
         }
 };
 

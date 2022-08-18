@@ -5,5 +5,6 @@
 #include "sphere.h"
 #include "moving_sphere.h"
 #include "bvh.h"
+#include "rectangle.h"
 
 #endif

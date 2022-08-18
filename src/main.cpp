@@ -76,8 +76,12 @@ HittableList earth() {
     auto earth_texture = make_shared<ImageTexture>("imgs/earthmap.jpg");
     auto earth_surface = make_shared<Lambertian>(earth_texture);
     auto globe = make_shared<Sphere>(Point3(0,0,0), 2, earth_surface);
+    auto texture = make_shared<SolidColor>(Color(4, 4, 4));
+    auto light = make_shared<LightSource>(texture);
+    auto rect = make_shared<XYRect>(0, 2, 0, 4, -3, light);
     auto world = HittableList();
     world.append(globe);
+    world.append(rect);
     return world;
 }
 

@@ -2,7 +2,6 @@
 #define DIFFUSE_LIGHT_H
 
 #include "Material.h"
-#include "vec3.h"
 
 class DiffuseLight: public Material {
     shared_ptr<Texture> texture;

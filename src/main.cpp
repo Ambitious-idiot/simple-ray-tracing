@@ -121,6 +121,7 @@ int main(int argc, char* argv[]) {
 
     // World
     auto world = BVHNode(world_constructor(), 0.0, 1.0);
+    const Color background(1, 1, 1);
 
     // Camera
     Point3 lookfrom(13,2,3);
@@ -143,7 +144,7 @@ int main(int argc, char* argv[]) {
                 auto u = (i + random_double()) / (image_width-1);
                 auto v = (j + random_double()) / (image_height-1);
                 Ray r = cam.get_ray(u, v);
-                pixel_color += ray_color(r, world, max_depth);
+                pixel_color += ray_color(r, background, world, max_depth);
             }
             write_color(std::cout, pixel_color, samples_per_pixel);
         }

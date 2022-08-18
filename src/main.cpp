@@ -57,7 +57,7 @@ HittableList two_spheres() {
     HittableList objs;
     auto checker = make_shared<CheckerTexture>(Color(0.2, 0.3, 0.1), Color(0.9, 0.9, 0.9));
     objs.append(make_shared<Sphere>(Point3(0, -10, 0), 10, make_shared<Lambertian>(checker)));
-    objs.append(make_shared<Sphere>(Point3(0, 10, 0), 10, make_shared<Lambertian>(checker)));
+    objs.append(make_shared<Sphere>(Point3(0, 10, 0), 10, make_shared<LightSource>(checker)));
     return objs;
 }
 
@@ -68,7 +68,7 @@ HittableList two_perlin_spheres() {
     texture1->append(make_shared<Marble>(5));
     texture1->append(make_shared<SolidColor>(Color(0.2, 0, 0)));
     objs.append(make_shared<Sphere>(Point3(0, -1000, 0), 1000, make_shared<Lambertian>(texture0)));
-    objs.append(make_shared<Sphere>(Point3(0, 2, 0), 2, make_shared<Lambertian>(texture1)));
+    objs.append(make_shared<Sphere>(Point3(0, 2, 0), 2, make_shared<LightSource>(texture1)));
     return objs;
 }
 
@@ -121,7 +121,7 @@ int main(int argc, char* argv[]) {
 
     // World
     auto world = BVHNode(world_constructor(), 0.0, 1.0);
-    const Color background(1, 1, 1);
+    const Color background(0, 0, 0);
 
     // Camera
     Point3 lookfrom(13,2,3);

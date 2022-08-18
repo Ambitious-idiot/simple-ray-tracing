@@ -64,3 +64,6 @@ NOT IN THE BOOKS try to bind several textures together to form a new texture.
 ## Rectangles and Light
 ### Light source
 add emit in class Material, refactory ray_color to return emitted light and background light.
+### Rectangles
+axis-aligned. UV is linear resizing.
+### Cornell box

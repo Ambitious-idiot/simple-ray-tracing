@@ -4,5 +4,6 @@
 #include "dielectric.h"
 #include "metal.h"
 #include "lambertian.h"
+#include "light_source.h"
 
 #endif

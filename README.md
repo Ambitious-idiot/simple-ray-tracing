@@ -49,7 +49,7 @@ build two-branch tree(kd tree) of hittables and the leaves are hittables except 
 Compare the program with and without BVH, the same image is rendered in 10m6s without BVH while in 59s with BVH.
 ## Texture
 build class Texture, add uv-solving function in Sphere::hit, insert texture to material::scatter.
-## Perlin Noise
+### Perlin Noise
 looks like blurred white noise. It takes a 3D point as input and the result is repeatable. Nearby points return similar numbers.
 To smooth the output, apply tri-lerp to the output.
 To address the Mach bands, use Hermitian smoothing.
@@ -57,7 +57,10 @@ To get higher-frequency texture, add arg scale.
 To make the texture less blocky looking, use random unit vectors rather than doubles. When calculating noise, use dot(rand_vec, weight).
 Turbulence: sum of Perlin noise with different frequencies.
 Marble: add regular phase change to turbulence.
-## Image texture
+### Image texture
 convert image to u-v so that the size of texture map doesn't suffer from the resolution. The conversion is totally a resizing transform.
-## Mixed texture
+### Mixed texture
 NOT IN THE BOOKS try to bind several textures together to form a new texture.
+## Rectangles and Light
+### Light source
+add emit in class Material, refactory ray_color to return emitted light and background light.

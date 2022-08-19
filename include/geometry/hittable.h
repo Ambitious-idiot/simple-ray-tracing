@@ -4,18 +4,34 @@
 #include "aabb.h"
 #include "Material.h"
 
-struct HitRecord {
-    Point3 p;
-    Vec3 normal;
-    shared_ptr<Material> mat_ptr;
-    double t;
-    double u, v;
-    bool front_face;
+class HitRecord {
+    public:
+        Point3 p;
+        Vec3 normal;
+        shared_ptr<Material> mat_ptr;
+        double t;
+        double u, v;
+        bool front_face;
 
-    inline void set_face_normal(const Ray& r, const Vec3& outward_normal) {
-        front_face = dot(r.direction(), outward_normal) < 0;
-        normal = front_face ? outward_normal :-outward_normal;
-    }
+    public:
+        HitRecord(): t(infinity) {}
+
+        void update(const Ray& r, Vec3 _normal, const shared_ptr<Material>& _mat_ptr, double _t, double _u, double _v) {
+            if (t < _t)
+                return;
+            t = _t;
+            p = r.at(_t);
+            normal = _normal;
+            set_face_normal(r);
+            u = _u;
+            v = _v;
+            mat_ptr = _mat_ptr;
+        }
+
+        void set_face_normal(const Ray& r) {
+            front_face = dot(r.direction(), normal) < 0;
+            normal = front_face ? normal :-normal;
+        }
 };
 
 class Hittable {

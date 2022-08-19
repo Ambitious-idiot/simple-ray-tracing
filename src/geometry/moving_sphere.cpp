@@ -18,14 +18,10 @@ bool MovingSphere::hit(const Ray& r, double t_min, double t_max, HitRecord& rec)
             return false;
     }
 
-    rec.t = root;
-    rec.p = r.at(rec.t);
-    rec.normal = (rec.p - center(r.time())) / radius;
-    Vec3 outward_normal = (rec.p - center(r.time())) / radius;
-    rec.set_face_normal(r, outward_normal);
-    get_uv(outward_normal, rec.u, rec.v);
-    rec.mat_ptr = mat_ptr;
-
+    auto normal = (r.at(root) - center(r.time())) / radius;
+    double u, v;
+    get_uv(normal, u, v);
+    rec.update(r, normal, mat_ptr, root, u, v);
     return true;
 }
 

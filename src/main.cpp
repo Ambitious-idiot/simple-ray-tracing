@@ -99,8 +99,22 @@ HittableList cornell_box() {
     objects.append(make_shared<XZRect>(0, 555, 0, 555, 0, white));
     objects.append(make_shared<XZRect>(0, 555, 0, 555, 555, white));
     objects.append(make_shared<XYRect>(0, 555, 0, 555, 555, white));
+    objects.append(make_shared<Box>(Point3(130, 0, 65), Point3(295, 165, 230), white));
+    objects.append(make_shared<Box>(Point3(265, 0, 295), Point3(430, 330, 460), white));
 
     return objects;
+}
+
+HittableList color_box() {
+    HittableList objs;
+    objs.append(make_shared<XYRect>(-1, 1, -1, 1, 1, make_shared<Lambertian>(make_shared<SolidColor>(Color(0.2, 0, 0)))));
+    objs.append(make_shared<XYRect>(-1, 1, -1, 1, -1, make_shared<Lambertian>(make_shared<SolidColor>(Color(0, 0.2, 0.2)))));
+    objs.append(make_shared<YZRect>(-1, 1, -1, 1, 1, make_shared<Lambertian>(make_shared<SolidColor>(Color(0, 0.2, 0)))));
+    objs.append(make_shared<YZRect>(-1, 1, -1, 1, -1, make_shared<Lambertian>(make_shared<SolidColor>(Color(0.2, 0, 0.2)))));
+    objs.append(make_shared<XZRect>(-1, 1, -1, 1, 1, make_shared<Lambertian>(make_shared<SolidColor>(Color(0, 0, 0.2)))));
+    objs.append(make_shared<XZRect>(-1, 1, -1, 1, -1, make_shared<Lambertian>(make_shared<SolidColor>(Color(0.2, 0.2, 0)))));
+    objs.append(make_shared<YZRect>(-3, 3, -3, 3, -3, make_shared<Metal>(make_shared<SolidColor>(Color(1, 1, 1)), 0)));
+    return objs;
 }
 
 // main
@@ -108,7 +122,7 @@ int main(int argc, char* argv[]) {
     // variable declarations
     HittableList (*world_constructors[])() = {
         random_scene, two_spheres, two_perlin_spheres,
-        earth, cornell_box
+        earth, cornell_box, color_box
     };
     HittableList (*world_constructor)() = random_scene;
     int img_width = 400;
@@ -136,8 +150,8 @@ int main(int argc, char* argv[]) {
         }
 
     // Image
-    // const auto aspect_ratio = 16.0 / 9.0;
-    const auto aspect_ratio = 1.0;
+    const auto aspect_ratio = 16.0 / 9.0;
+    // const auto aspect_ratio = 1.0;
     const int image_width = img_width;
     const int image_height = static_cast<int>(image_width / aspect_ratio);
     const int samples_per_pixel = spp;
@@ -145,18 +159,19 @@ int main(int argc, char* argv[]) {
 
     // World
     auto world = BVHNode(world_constructor(), 0.0, 1.0);
-    const Color background(0, 0, 0);
+    const Color background(1, 1, 1);
+    // const Color background(0, 0, 0);
 
     // Camera
-    // Point3 lookfrom(13,2,3);
-    Point3 lookfrom(278, 278, -800);
-    // Point3 lookat(0,0,0);
-    Point3 lookat(278, 278, 0);
+    Point3 lookfrom(13,2,3);
+    // Point3 lookfrom(278, 278, -800);
+    Point3 lookat(0,0,0);
+    // Point3 lookat(278, 278, 0);
     Vec3 vup(0,1,0);
     auto dist_to_focus = 10;
     auto aperture = 0.1;
-    // auto vfov = 20.0;
-    auto vfov = 40.0;
+    auto vfov = 20.0;
+    // auto vfov = 40.0;
 
     Camera cam(lookfrom, lookat, vup, vfov, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
 

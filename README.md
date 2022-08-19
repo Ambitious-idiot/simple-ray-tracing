@@ -5,6 +5,7 @@ Write the rgb triplets to the file with the redirection '>'
 First implement class Vec3 and directly typedef point and color as Vec3, then implement ray with two Vec3.
 ## Add hittable
 Implement abstract base class Hittable with virtual function hit, then implement sphere and hittable list.
+When implementing box, find bug in the book that it doesn't compare which hit happens first, which is the real hit, so add checking whether t of new hit is greater than that rec stores
 ## Add camera
 Capsule the aspect ratio, focal length... in a class
 ## Add antialias
@@ -67,3 +68,4 @@ add emit in class Material, refactory ray_color to return emitted light and back
 ### Rectangles
 axis-aligned. UV is linear resizing.
 ### Cornell box
+### Box

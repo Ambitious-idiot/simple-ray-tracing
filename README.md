@@ -1,4 +1,5 @@
 # Ray Tracing in One Weekend
+This repo is a simple implementation of ray tracing based on [_Ray Tracing in One Weekend_](https://raytracing.github.io/books/RayTracingInOneWeekend.html) and [_Ray Tracing: The Next Week_](https://raytracing.github.io/books/RayTracingTheNextWeek.html). In this implementation some issues in the original code are fixed and some structures of codes are changed. Also some new features and examples are added. However there is still a bug when rendering Cornell box that the front box is blocked by the other.
 ## Output a PPM image
 Write the rgb triplets to the file with the redirection '>'
 ## Implement point, color and ray as Vec3

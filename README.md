@@ -69,3 +69,10 @@ add emit in class Material, refactory ray_color to return emitted light and back
 axis-aligned. UV is linear resizing.
 ### Cornell box
 ### Box
+## Transforms
+### Translation
+Translate the ray to reach the object and calculate the hit point.
+### Rotation
+Take y as the pivot,
+$x^\prime=\cos\theta\cdot x+\sin\theta\cdot z$
+$z^\prime=−\sin\theta\cdot x+\cos\theta\cdot z$

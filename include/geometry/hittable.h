@@ -17,7 +17,7 @@ class HitRecord {
         HitRecord(): t(infinity) {}
 
         void update(const Ray& r, Vec3 _normal, const shared_ptr<Material>& _mat_ptr, double _t, double _u, double _v) {
-            if (t < _t)
+            if (t < _t-0.000001)
                 return;
             t = _t;
             p = r.at(_t);

@@ -7,5 +7,6 @@
 #include "bvh.h"
 #include "rectangle.h"
 #include "box.h"
+#include "transforms.h"
 
 #endif
